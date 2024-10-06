@@ -5,99 +5,185 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEECODER实验室 - 南京大学软件学院</title>
     <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0066cc;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            max-width: 900px;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         .top-header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+        .top-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
         }
         .university-logos img {
-            height: 60px;
+            height: 50px;
             margin-left: 15px;
         }
         .main-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
         }
-        .seecoder-logo {
-            width: 200px;
-            height: auto;
-            margin-right: 20px;
+        .main-header img {
+            width: 150px;
+            margin-bottom: 20px;
         }
-        h1 {
-            color: #333;
+        .main-header h1 {
             font-size: 2.5em;
             margin: 0;
         }
-        /* 其他样式保持不变 */
+        section {
+            padding: 40px 0;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        .research-direction {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .research-direction h3 {
+            color: var(--secondary-color);
+        }
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .team-member {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: calc(33% - 20px);
+        }
+        .team-member h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* 添加导航栏样式 */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--background-color);
+        }
     </style>
 </head>
 <body>
-    <div class="top-header">
-        <div></div> <!-- 空的div用于保持布局平衡 -->
-        <div class="university-logos">
-            <img src="nju_se_logo.png" alt="南京大学软件学院标志">
-            <img src="nju_logo.jpg" alt="南京大学标志">
+    <header class="top-header">
+        <div class="container">
+            <div></div>
+            <div class="university-logos">
+                <img src="nju_se_logo.png" alt="南京大学软件学院标志">
+                <img src="nju_logo.png" alt="南京大学标志">
+            </div>
         </div>
-    </div>
-
-    <header class="main-header">
-        <img src="seecoder_logo.png" alt="SEECODER实验室标志" class="seecoder-logo">
-        <h1>SEECODER实验室</h1>
     </header>
 
-    <main>
-        <section class="section">
+    <header class="main-header">
+        <div class="container">
+            <img src="seecoder_logo.png" alt="SEECODER实验室标志">
+            <h1>SEECODER实验室</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">发表论文</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section>
             <h2>关于我们</h2>
             <p>SEECODER实验室致力于推动软件工程和人工智能领域的创新研究。我们的团队专注于解决现代软件开发和运维中的关键挑战，同时探索新兴技术在软件工程中的应用。</p>
         </section>
 
-        <section class="section">
+        <section>
             <h2>研究方向</h2>
             <div class="research-direction">
                 <h3>运维一体化</h3>
-                <p>我们致力于研究和开发先进的运维一体化解决方案，旨在提高软件系统的可靠性、可扩展性和效率。这包括自动化部署、持续集成/持续交付（CI/CD）、监控和故障排除等方面的创新。</p>
-            </div>
-            <div class="research-direction">
-                <h3>数据资产评估</h3>
-                <p>在数字化时代，我们专注于开发方法和工具来评估和管理组织的数据资产。这涉及数据质量分析、数据价值评估、数据治理策略等领域，帮助组织更好地理解和利用其数据资源。</p>
-            </div>
-            <div class="research-direction">
-                <h3>大模型驱动编程</h3>
-                <p>我们探索利用大规模语言模型和人工智能技术来革新软件开发过程。这包括研究如何使用AI辅助代码生成、自动化测试、智能代码审查，以及提高程序员的生产力和代码质量。</p>
-            </div>
-        </section>
+                <p>我们致力于研究和开发先进的运维一体化解决方案，旨在提高软件系统的可靠性、可扩展性和效率。这包括自动化部署、持续集成/持续交付（CI/CD）、监控和故障排除等方面的创新。
+</section>
 
-
-        <section class="section">
+        <section>
             <h2>团队成员</h2>
-            <div class="team-member">
-                <h3>刘钦</h3>
-                <p>职位：副教授</p>
-                <p>研究方向：软件工程、数据增强</p>
-            </div>
-            <div class="team-member">
-                <h3>冯桂焕</h3>
-                <p>职位：副教授</p>
-                <p>研究方向：人机交互</p>
-            </div>
-            <div class="team-member">
-                <h3>刘峰</h3>
-                <p>职位：高级工程师</p>
-                <p>研究方向：数据挖掘</p>
+            <div class="team-members">
+                <div class="team-member">
+                    <h3>刘钦</h3>
+                    <p>职位：副教授</p>
+                    <p>研究方向：软件工程、数据增强</p>
+                </div>
+                <div class="team-member">
+                    <h3>冯桂焕</h3>
+                    <p>职位：副教授</p>
+                    <p>研究方向：人机交互</p>
+                </div>
+                <div class="team-member">
+                    <h3>刘峰</h3>
+                    <p>职位：高级工程师</p>
+                    <p>研究方向：数据挖掘</p>
+                </div>
             </div>
         </section>
 
-        <section class="section">
+        <section>
             <h2>联系我们</h2>
             <p>地址：江苏省南京市汉口路22号费彝民楼911室</p>
             <p>邮箱：qinliu@nju.edu.cn</p>
