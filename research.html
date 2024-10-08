@@ -5,106 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>研究方向 - SEECODER实验室</title>
     <style>
-        /* 保留之前的样式 */
-        .platform {
-            background-color: #f0f0f0;
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 8px;
         }
-        .platform h3 {
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #003366;
+        }
+        .header h1 {
+            color: #003366;
+            margin: 0;
+        }
+        .header a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        h2 {
             color: #003366;
         }
-        .sub-platform {
-            margin-left: 20px;
+        .platform {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
         }
         .platform-image {
             max-width: 100%;
-            width: 600px; /* 设置一个固定宽度 */
             height: auto;
-            margin: 20px auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .platform-image-small {
-            max-width: 100%;
-            width: 400px; /* 为较小的图片设置一个较小的宽度 */
-            height: auto;
-            margin: 20px auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        @media (max-width: 768px) {
-            .platform-image, .platform-image-small {
-                width: 100%; /* 在小屏幕上占满宽度 */
-            }
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- 复制顶部 header 和导航栏 -->
+    <div class="header">
+        <h1>研究方向</h1>
+        <a href="index.html">返回主页</a>
+    </div>
 
-    <main class="container">
-        <h2>研究方向</h2>
-        
+    <main>
         <div class="platform">
-            <h3>SEECODER平台</h3>
+            <h2>SEECODER平台</h2>
             <p>SEECODER软件工程教育云平台是软件学院刘钦老师实验室自2018年开始自主研发的一款产教研融合平台。平台由开发运维一体化主平台SEECODER、大数据分析平台SEEdata、大语言模型平台SEEai、鸿蒙自动化测平台SEEpium组成。</p>
-            <img src="seecoder_research.PNG" alt="SEECODER研究平台" class="platform-image">
-            
-            <div class="sub-platform">
-                <h4>SEECODER主平台</h4>
-                <p>SEECODER平台提供了一整套DevOps机制，旨在为团队提供高效、协作的开发环境。平台为用户提供了一系列完整的工具和流程，涵盖了从需求管理到代码部署的整个软件开发生命周期。</p>
-                <img src="devops.png" alt="SEECODER DevOps" class="platform-image-small">
-            </div>
-            
-            <div class="sub-platform">
-                <h4>编程者子平台</h4>
-                <p>编程者Coder平台是专为学生设计的在线编程考试系统，隶属于SEECODER平台的应用系统之一。</p>
-            </div>
-            
-            <div class="sub-platform">
-                <h4>开发者子平台</h4>
-                <p>开发者Developer平台是面向学生的一站式研发管理平台，旨在支持学生进行完整的软件工程实践。</p>
-            </div>
-            
-            <div class="sub-platform">
-                <h4>评估者子平台</h4>
-                <p>评估者（Eval）平台是SEECODER平台的重要应用之一，旨在提供评测题系统。</p>
-            </div>
+            <img src="seecoder_research.png" alt="SEECODER研究平台" class="platform-image">
         </div>
 
         <div class="platform">
-            <h3>SEEdata 大数据框架</h3>
-            <p>SEEdata是SEECODER平台大数据平台。平台由DataDevOps平台、数据治理平台、数据合规管理平台和上层应用组成。</p>
-            <img src="seedata.png" alt="SEEdata 大数据框架" class="platform-image">
+            <h2>数据资产评估</h2>
+            <p>数据资产评估是一个新兴的研究方向，旨在量化和评估组织或企业所拥有的数据资产的价值。我们的研究聚焦于开发创新的评估方法和工具，以帮助组织更好地理解、管理和利用他们的数据资产，从而在数字经济时代获得竞争优势。</p>
         </div>
 
         <div class="platform">
-            <h3>SEEai LLM框架</h3>
-            <p>SEEAI是SEECODER平台LLM应用开发平台。平台由本地模型层、平台层、应用框架层和应用层四个层次组成。</p>
-            <img src="seeai.png" alt="SEEai LLM框架" class="platform-image">
+            <h2>基于大模型的教育云</h2>
+            <p>基于大模型的教育云是我们的另一个重要研究方向。我们致力于将最新的大规模语言模型技术应用于教育领域，开发智能化、个性化的教育云平台。这个平台旨在为学生提供更加高效、有针对性的学习体验，同时为教育者提供强大的教学辅助工具。</p>
         </div>
 
         <div class="platform">
-            <h3>SEEpium 鸿蒙测试框架</h3>
-            <p>SEEpium鸿蒙测试框架基于鸿蒙Hypium测试框架、大语言模型进一步集成，提供比鸿蒙Hypium Test测试工具更进一步的鸿蒙OS自动化测试能力。</p>
-            <img src="seepium.png" alt="SEEpium 鸿蒙测试框架" class="platform-image">
-        </div>
-
-        <div class="platform">
-            <h3>SE for Data</h3>
+            <h2>SE for Data</h2>
             <p>在SE for Data，我们专注于提升人工智能领域的数据集质量。我们的目标是通过创新的数据集评估和优化方法，确保研究人员和开发者能够获得最准确、最有效的数据集。</p>
         </div>
 
         <div class="platform">
-            <h3>AI for SE</h3>
+            <h2>AI for SE</h2>
             <p>本模块研究如何利用大语言模型辅助软件工程，其中一个有代表性的项目是测试用例自动生成。该项目从软件需求文档出发，利用AI技术，研究自动生成文本测试用例的方法，服务于软件测试人员。</p>
         </div>
     </main>
 
-    <!-- 复制 footer -->
+    <footer>
+        <p>&copy; 2024 SEECODER实验室. 保留所有权利。</p>
+    </footer>
 </body>
 </html>

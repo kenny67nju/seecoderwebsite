@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表论文 - SEECODER实验室</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #003366;
+        }
+        .header h1 {
+            color: #003366;
+            margin: 0;
+        }
+        .header a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        #search-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .publication {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .publication-title {
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+        .publication-authors {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        .publication-venue {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .publication-year {
+            font-weight: bold;
+            color: #16a085;
+        }
+        .publication-link {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+        .year-separator {
+            background: #003366;
+            color: #fff;
+            padding: 5px 10px;
+            margin: 20px 0;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 15px;
+            background: #003366;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pagination button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #003366;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>发表论文</h1>
+        <a href="index.html">返回主页</a>
+    </div>
+
+    <input type="text" id="search-box" placeholder="搜索论文...">
+
+    <div id="publications-container"></div>
+
+    <div class="pagination">
+        <button id="prev-page" disabled>上一页</button>
+        <span id="page-info"></span>
+        <button id="next-page">下一页</button>
+    </div>
+
+    <a href="#" id="back-to-top">返回顶部</a>
+
+    <script>
+        const publications = [
+            {
+                title: "Semi-supervised attention based merging network with hybrid dilated convolution module for few-shot HDR video reconstruction",
+                authors: "Fengshan Zhao, Qin Liu, Takeshi Ikenaga",
+                venue: "Multim. Tools Appl., 83(13):37409-37430",
+                year: 2024,
+                link: "https://doi.org/10.1007/s11042-023-16885-7"
+            },
+            {
+                title: "Multi-Level Spatial-Temporal Feature Aggregation and Alignment-Based Selective Residual Dense Propagation Module for HDR Video Reconstruction",
+                authors: "Yiyu Liu, Fengshan Zhao, Qin Liu, Takeshi Ikenaga",
+                venue: "IEEE International Conference on Acoustics, Speech and Signal Processing, ICASSP 2024, Seoul, Republic of Korea, pp. 4270-4274",
+                year: 2024,
+                link: "https://doi.org/10.1109/ICASSP48485.2024.10445863"
+            },
+            {
+                title: "Pyramid Spatial Feature Transform and Shared-Offsets Deformable Alignment Based Convolutional Network for HDR Imaging",
+                authors: "Junda Liao, Qin Liu, Takeshi Ikenaga",
+                venue: "IEEE International Conference on Acoustics, Speech and Signal Processing ICASSP 2023, Rhodes Island, Greece, pp. 1-5",
+                year: 2023,
+                link: "https://doi.org/10.1109/ICASSP49357.2023.10096591"
+            },
+            {
+                title: "HDR-LMDA: A Local Area-Based Mixed Data Augmentation Method for Hdr Video Reconstruction",
+                authors: "Fengshan Zhao, Qin Liu, Takeshi Ikenaga",
+                venue: "IEEE International Conference on Image Processing, ICIP 2023, Kuala Lumpur, Malaysia, pp. 2020-2024",
+                year: 2023,
+                link: "https://doi.org/10.1109/ICIP49359.2023.10222677"
+            },
+            {
+                title: "Multi-Prior Based Multi-Scale Condition Network for Single-Image HDR Reconstruction",
+                authors: "Haorong Jiang, Fengshan Zhao, Junda Liao, Qin Liu, Takeshi Ikenaga",
+                venue: "18th International Conference on Machine Vision and Applications, MVA 2023, Hamamatsu, Japan, pp. 1-5",
+                year: 2023,
+                link: "https://doi.org/10.23919/MVA57639.2023.10216063"
+            },
+            {
+                title: "Attention-guided network with inverse tone-mapping guided up-sampling for HDR imaging of dynamic scenes",
+                authors: "Yipeng Deng, Qin Liu, Takeshi Ikenaga",
+                venue: "Multim. Tools Appl., 81(9):12925-12944",
+                year: 2022,
+                link: "https://doi.org/10.1007/s11042-021-11717-y"
+            },
+            {
+                title: "Texture and exposure awareness based refill for HDRI reconstruction of saturated and occluded areas",
+                authors: "Jianming Zhou, Yipeng Deng, Qin Liu, Takeshi Ikenaga",
+                venue: "IET Image Process., 15(11):2705-2716",
+                year: 2021,
+                link: "https://doi.org/10.1049/ipr2.12257"
+            },
+            {
+                title: "Selective Kernel and Motion-emphasized Loss Based Attention-guided Network for HDR Imaging of Dynamic Scenes",
+                authors: "Yipeng Deng, Qin Liu, Takeshi Ikenaga",
+                venue: "25th International Conference on Pattern Recognition, ICPR 2020, Virtual Event / Milan, Italy, pp. 8976-8983",
+                year: 2020,
+                link: "https://doi.org/10.1109/ICPR48806.2021.9412973"
+            },
+            {
+                title: "HomoTR: Online Test Recommendation System Based on Homologous Code Matching",
+                authors: "Chenqian Zhu, Weisong Sun, Qin Liu, Yangyang Yuan, Chunrong Fang, Yong Huang",
+                venue: "35th IEEE/ACM International Conference on Automated Software Engineering, ASE 2020, Melbourne, Australia, pp. 1302-1306",
+                year: 2020,
+                link: "https://doi.org/10.1145/3324884.3415296"
+            },
+            {
+                title: "Robust Ghost-Free High-Dynamic-Range Imaging by Visual Salience Based Bilateral Motion Detection and Stack Extension Based Exposure Fusion",
+                authors: "Zijie Wang, Qin Liu, Takeshi Ikenaga",
+                venue: "IEICE Trans. Fundam. Electron. Commun. Comput. Sci., 100-A(11):2266-2274",
+                year: 2017,
+                link: "https://doi.org/10.1587/transfun.E100.A.2266"
+            },
+            {
+                title: "Visual salience and stack extension based ghost removal for high-dynamic-range imaging",
+                authors: "Zijie Wang, Qin Liu, Takeshi Ikenaga",
+                venue: "2017 IEEE International Conference on Image Processing, ICIP 2017, Beijing, China, pp. 2244-2248",
+                year: 2017,
+                link: "https://doi.org/10.1109/ICIP.2017.8296681"
+            },
+            {
+                title: "Ghost-free high dynamic range imaging via moving objects detection and extension",
+                authors: "Benkang Zhang, Qin Liu, Takeshi Ikenaga",
+                venue: "Asia-Pacific Signal and Information Processing Association Annual Summit and Conference, APSIPA 2015, Hong Kong, pp. 459-462",
+                year: 2015,
+                link: "https://doi.org/10.1109/APSIPA.2015.7415313"
+            },
+            {
+                title: "Motion area based exposure fusion algorithm for ghost removal in high dynamic range video generation",
+                authors: "Shu-Yi Huang, Qin Liu, Hao Wang, Takeshi Ikenaga",
+                venue: "Asia-Pacific Signal and Information Processing Association Annual Summit and Conference, APSIPA 2014, Chiang Mai, Thailand, pp. 1-4",
+                year: 2014,
+                link: "https://doi.org/10.1109/APSIPA.2014.7041597"
+            },
+            {
+                title: "Constant Bit-Rate Multi-Stage Rate Control for Rate-Distortion Optimized H.264/AVC Encoders",
+                authors: "Shuijiong Wu, Peilin Liu, Yiqing Huang, Qin Liu, Takeshi Ikenaga",
+                venue: "IEICE Trans. Inf. Syst., 93-D(7):1716-1726",
+                year: 2010,
+                link: "https://doi.org/10.1587/transinf.E93.D.1716"
+            },
+            {
+                title: "Low Bit-Rate Motion Block Detection for Uncompressed Indoor Surveillance",
+                authors: "Jia Su, Qin Liu, Takeshi Ikenaga",
+                venue: "Prodeedings of the 2010 International Conference on Computational Science and Its Applications, ICCSA 2010, Fukuoka, Japan, pp. 327-330",
+                year: 2010,
+                link: "https://doi.org/10.1109/ICCSA.2010.77"
+            },
+            {
+                title: "Fully Utilized and Low Design Effort Architecture for H.264/AVC Intra Predictor Generation",
+                authors: "Yiqing Huang, Qin Liu, Takeshi Ikenaga",
+                venue: "Advances in Multimedia Modeling, 16th International Multimedia Modeling Conference, MMM 2010, Chongqing, China, pp. 737-742",
+                year: 2010,
+                link: "https://doi.org/10.1007/978-3-642-11301-7_78"
+            }
+        ];
+
+        const itemsPerPage = 10;
+        let currentPage = 1;
+        let filteredPublications = [...publications];
+
+        function renderPublications() {
+            const container = document.getElementById('publications-container');
+            container.innerHTML = '';
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pagePublications = filteredPublications.slice(startIndex, endIndex);
+
+            let currentYear = null;
+
+            pagePublications.forEach(pub => {
+                if (pub.year !== currentYear) {
+                    currentYear = pub.year;
+                    const yearSeparator = document.createElement('div');
+                    yearSeparator.className = 'year-separator';
+                    yearSeparator.textContent = currentYear;
+                    container.appendChild(yearSeparator);
+                }
+
+                const pubElement = document.createElement('div');
+                pubElement.className = 'publication';
+                pubElement.innerHTML = `
+                    <div class="publication-title">${pub.title}</div>
+                    <div class="publication-authors">${pub.authors}</div>
+                    <div class="publication-venue">${pub.venue}</div>
+                    <div class="publication-year">${pub.year}</div>
+                    <a href="${pub.link}" class="publication-link" target="_blank">查看论文</a>
+                `;
+                container.appendChild(pubElement);
+            });
+
+            updatePagination();
+        }
+
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
+            document.getElementById('page-info').textContent = `${currentPage} / ${totalPages}`;
+            document.getElementById('prev-page').disabled = currentPage === 1;
+            document.getElementById('next-page').disabled = currentPage === totalPages;
+        }
+
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderPublications();
+            }
+        });
+
+        document.getElementById('next-page').addEventListener('click', () => {
+            const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderPublications();
+            }
+        });
+
+        document.getElementById('search-box').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            filteredPublications = publications.filter(pub => 
+                pub.title.toLowerCase().includes(searchTerm) ||
+                pub.authors.toLowerCase().includes(searchTerm) ||
+                pub.venue.toLowerCase().includes(searchTerm)
+            );
+            currentPage = 1;
+            renderPublications();
+        });
+
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        document.getElementById('back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        renderPublications();
+    </script>
+</body>
+</html>
