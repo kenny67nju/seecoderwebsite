@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 - SEECODER实验室</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #003366;
+        }
+        .header h1 {
+            color: #003366;
+            margin: 0;
+        }
+        .header a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .profile-section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .profile-header {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .profile-info h2 {
+            color: #003366;
+            margin-top: 0;
+        }
+        .profile-info p {
+            margin: 5px 0;
+        }
+        .section-title {
+            background: #003366;
+            color: #fff;
+            padding: 5px 10px;
+            margin: 20px 0;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+        .contact-info strong {
+            color: #003366;
+        }
+        .research-interests ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .research-interests li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .research-interests li:before {
+            content: "•";
+            color: #003366;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>个人主页</h1>
+        <a href="index.html">返回主页</a>
+    </div>
+
+    <div class="profile-section">
+        <div class="profile-header">
+            <img src="path/to/profile-photo.jpg" alt="个人照片" class="profile-image">
+            <div class="profile-info">
+                <h2>刘钦 教授</h2>
+                <p>南京大学软件学院</p>
+                <p>博士生导师</p>
+                <p>SEECODER实验室主任</p>
+            </div>
+        </div>
+
+        <div class="section-title">联系方式</div>
+        <div class="contact-info">
+            <strong>邮箱：</strong>
+            <span>qinliu@nju.edu.cn</span>
+            <strong>办公室：</strong>
+            <span>仙林校区计算机科学技术楼 XXX</span>
+            <strong>电话：</strong>
+            <span>+86-XXX-XXXXXXXX</span>
+        </div>
+
+        <div class="section-title">研究方向</div>
+        <div class="research-interests">
+            <ul>
+                <li>软件工程</li>
+                <li>人工智能</li>
+                <li>图像处理</li>
+                <li>计算机视觉</li>
+            </ul>
+        </div>
+
+        <div class="section-title">教育背景</div>
+        <div class="education">
+            <p><strong>2XXX-2XXX</strong> 博士学位，XXXX大学</p>
+            <p><strong>2XXX-2XXX</strong> 硕士学位，XXXX大学</p>
+            <p><strong>2XXX-2XXX</strong> 学士学位，XXXX大学</p>
+        </div>
+
+        <div class="section-title">工作经历</div>
+        <div class="experience">
+            <p><strong>2XXX-至今</strong> 南京大学软件学院，教授</p>
+            <p><strong>2XXX-2XXX</strong> XXXX大学，副教授</p>
+            <p><strong>2XXX-2XXX</strong> XXXX公司，研究员</p>
+        </div>
+    </div>
+</body>
+</html>
+
