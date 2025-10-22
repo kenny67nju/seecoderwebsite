@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教学成果与奖励 - SEECODER实验室</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0066cc;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .top-header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+        .top-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .university-logos img {
+            height: 50px;
+            margin-left: 15px;
+        }
+        .main-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .main-header img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .main-header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        section {
+            padding: 40px 0;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        .awards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .award-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: calc(50% - 20px);
+        }
+        .award-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .award-item h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .award-year {
+            font-weight: bold;
+            color: #16a085;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* 添加导航栏样式 */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--background-color);
+        }
+        
+        /* 年份分组 */
+        .awards-by-year {
+            margin-top: 20px;
+        }
+        .awards-by-year h3 {
+            color: var(--primary-color);
+            border-bottom: 1px dashed var(--secondary-color);
+            padding-bottom: 5px;
+        }
+        
+        /* 证书图片样式 */
+        .certificate-container {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .certificate-image {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: transform 0.3s;
+            object-fit: contain;
+        }
+        .certificate-image:hover {
+            transform: scale(1.05);
+        }
+        /* 特殊处理需要旋转的图片 */
+        .certificate-image.rotate-90 {
+            transform: rotate(90deg);
+            max-width: 80%;
+            margin: 20px auto;
+        }
+        .certificate-image.rotate-90:hover {
+            transform: rotate(90deg) scale(1.05);
+        }
+        .certificate-pdf-viewer {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .certificate-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .certificate-modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .certificate-modal-content.pdf {
+            width: 90%;
+            height: 90%;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #bbb;
+        }
+        
+        @media (max-width: 768px) {
+            .award-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <div class="container">
+            <div></div>
+            <div class="university-logos">
+                <img src="nju_se_logo.png" alt="南京大学软件学院标志">
+                <img src="nju_logo.jpg" alt="南京大学标志">
+            </div>
+        </div>
+    </header>
+
+    <header class="main-header">
+        <div class="container">
+            <img src="seecoder_logo.png" alt="SEECODER实验室标志">
+            <h1>SEECODER实验室</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="members.html">团队成员</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="teaching.html">教学成果</a></li>
+            <li><a href="publications.html">发表论文</a></li>
+            <li><a href="awards.html">奖项荣誉</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="data-institute.html">电子口岸数字产业技术研究所</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section>
+            <h2>教学成果与奖励</h2>
+            <p>SEECODER实验室在教学方面取得了丰硕的成果，获得了多项荣誉和奖励。</p>
+            
+            <div class="awards-by-year">
+                <h3>2025年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>HDE续任</h3>
+                        <p class="award-year">2025年</p>
+                        <p>HDE续任资格认证</p>
+                        <div class="certificate-container">
+                            <img src="files/2025-HDE续任.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2024年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>教育部产教融合协同育人项目"十周年项目典型案例"</h3>
+                        <p class="award-year">2024年</p>
+                        <p>获教育部产教融合协同育人项目"十周年项目典型案例"荣誉</p>
+                        <div class="certificate-container">
+                            <img src="files/2024-教育部产教融合协同育人项目“十周年项目典型案例”.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>2023年度教师数字化教学研究与实践项目优秀结项</h3>
+                        <p class="award-year">2024年</p>
+                        <p>获2023年度教师数字化教学研究与实践项目优秀结项</p>
+                        <div class="certificate-container">
+                            <img src="files/2024-2023年度教师数字化教学研究与实践项目优秀结项.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>软件教学案例交流与竞赛优秀奖</h3>
+                        <p class="award-year">2024年</p>
+                        <p>在软件教学案例交流与竞赛中获得优秀奖</p>
+                        <div class="certificate-container">
+                            <embed src="files/2024-软件教学案例交流与竞赛优秀奖.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>鸿蒙先锋优秀鸿蒙人才培育奖</h3>
+                        <p class="award-year">2024年</p>
+                        <p>获鸿蒙先锋优秀鸿蒙人才培育奖</p>
+                        <div class="certificate-container">
+                            <embed src="files/2024-鸿蒙先锋优秀鸿蒙人才培育奖.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>校跨学科项目结项证书</h3>
+                        <p class="award-year">2024年</p>
+                        <p>校跨学科项目成功结项</p>
+                        <div class="certificate-container">
+                            <img src="files/2024-校跨学科项目结项证书.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2023年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>国家级教学成果奖一等奖</h3>
+                        <p class="award-year">2023年</p>
+                        <p>获国家级教学成果奖一等奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2023-国家级教学成果奖一等奖.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>南京大学中国银行青年教师优秀教学奖</h3>
+                        <p class="award-year">2023年</p>
+                        <p>获南京大学中国银行青年教师优秀教学奖</p>
+                        <div class="certificate-container">
+                            <embed src="files/2023-南京大学中国银行青年教师优秀教学奖.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>教育部产学合作协同育人项目优秀项目案例</h3>
+                        <p class="award-year">2023年</p>
+                        <p>获教育部产学合作协同育人项目优秀项目案例</p>
+                        <div class="certificate-container">
+                            <img src="files/2023-教育部产学合作协同育人项目优秀项目案例.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>教育部产学合作协同育人项目华为优秀成果奖</h3>
+                        <p class="award-year">2023年</p>
+                        <p>获教育部产学合作协同育人项目华为优秀成果奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2023-教育部产学合作协同育人项目华为优秀成果奖.png" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>华为开发专家</h3>
+                        <p class="award-year">2023年</p>
+                        <p>被评为华为开发专家</p>
+                        <div class="certificate-container">
+                            <img src="files/2023-华为开发专家.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>协同育人项目结题</h3>
+                        <p class="award-year">2023年</p>
+                        <p>协同育人项目成功结题</p>
+                        <div class="certificate-container">
+                            <img src="files/2023-协同育人项目结题.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2022年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>南京大学育教融合奖</h3>
+                        <p class="award-year">2022年</p>
+                        <p>获南京大学育教融合奖</p>
+                        <div class="certificate-container">
+                            <embed src="files/2022-南京大学育教融合奖.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>大学生计算机技能应用大赛一等奖指导老师</h3>
+                        <p class="award-year">2022年</p>
+                        <p>作为指导老师获大学生计算机技能应用大赛一等奖</p>
+                        <div class="certificate-container">
+                            <embed src="files/2022-大学生计算机技能应用大赛一等奖指导老师.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>产学合作协同育人项目</h3>
+                        <p class="award-year">2022年</p>
+                        <p>获产学合作协同育人项目（iOS方向）</p>
+                        <div class="certificate-container">
+                            <img src="files/2022-产学合作协同育人-iOS.png" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>产学合作协同育人项目</h3>
+                        <p class="award-year">2022年</p>
+                        <p>获产学合作协同育人项目（鸿蒙方向）</p>
+                        <div class="certificate-container">
+                            <img src="files/2022-产学合作协同育人-鸿蒙.png" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>春雨奖</h3>
+                        <p class="award-year">2022年</p>
+                        <p>获春雨奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2022-春雨奖.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>协同育人项目结题证书</h3>
+                        <p class="award-year">2022年</p>
+                        <p>协同育人项目成功结题</p>
+                        <div class="certificate-container">
+                            <embed src="files/2022-协同育人项目结题证书.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2021年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>【特等奖】人机物融合智能化时代计算机专业创新人才培养体系建设与实践</h3>
+                        <p class="award-year">2021年</p>
+                        <p>获教学成果特等奖</p>
+                        <div class="certificate-container">
+                            <embed src="files/2021-【特等奖】人机物融合智能化时代计算机专业创新人才培养体系建设与实践.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>移动应用开发</h3>
+                        <p class="award-year">2021年</p>
+                        <p>移动应用开发相关成果</p>
+                        <div class="certificate-container">
+                            <embed src="files/2021-移动应用开发.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2020年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>国家级一流本科课程</h3>
+                        <p class="award-year">2020年</p>
+                        <p>课程被评为国家级一流本科课程</p>
+                        <div class="certificate-container">
+                            <embed src="files/2020-国家级一流本科课程.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>SEECODER著作权</h3>
+                        <p class="award-year">2020年</p>
+                        <p>SEECODER平台获得软件著作权</p>
+                        <div class="certificate-container">
+                            <embed src="files/2020-SEECODER著作权.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>优秀毕业论文一等奖</h3>
+                        <p class="award-year">2020年</p>
+                        <p>指导学生获优秀毕业论文一等奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2020-优秀毕业论文一等奖.jpeg" alt="证书" class="certificate-image rotate-90" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>魅力导师</h3>
+                        <p class="award-year">2020年</p>
+                        <p>获魅力导师称号</p>
+                        <div class="certificate-container">
+                            <img src="files/2020-魅力导师.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>大学生创新训练计划</h3>
+                        <p class="award-year">2020年</p>
+                        <p>参与大学生创新训练计划</p>
+                        <div class="certificate-container">
+                            <img src="files/2020-大学生创新训练计划.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>招生先进个人</h3>
+                        <p class="award-year">2020年</p>
+                        <p>获招生先进个人称号</p>
+                        <div class="certificate-container">
+                            <img src="files/2020-招生先进个人.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>本科新生导师</h3>
+                        <p class="award-year">2020年</p>
+                        <p>担任本科新生导师</p>
+                        <div class="certificate-container">
+                            <img src="files/2020-本科新生导师.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>移动应用开发</h3>
+                        <p class="award-year">2020年</p>
+                        <p>移动应用开发相关成果</p>
+                        <div class="certificate-container">
+                            <img src="files/2020-移动应用开发.png" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2019年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>实验教学改革研究课题</h3>
+                        <p class="award-year">2019年</p>
+                        <p>参与实验教学改革研究课题</p>
+                        <div class="certificate-container">
+                            <img src="files/2019-实验教学改革研究课题.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>本科新生导师</h3>
+                        <p class="award-year">2019年</p>
+                        <p>担任本科新生导师</p>
+                        <div class="certificate-container">
+                            <img src="files/2019-本科新生导师.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2018年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>国家精品在线开放课程</h3>
+                        <p class="award-year">2018年</p>
+                        <p>课程被评为国家精品在线开放课程</p>
+                        <div class="certificate-container">
+                            <img src="files/2018-国家精品在线开放课程.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>南京大学中国银行教师教学成果奖</h3>
+                        <p class="award-year">2018年</p>
+                        <p>获南京大学中国银行教师教学成果奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2018-南京大学中国银行教师教学成果奖.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>中国大学教学</h3>
+                        <p class="award-year">2018年</p>
+                        <p>在中国大学教学方面取得成果</p>
+                        <div class="certificate-container">
+                            <img src="files/2018-中国大学教学.png" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>新工科结题证书</h3>
+                        <p class="award-year">2018年</p>
+                        <p>新工科项目成功结题</p>
+                        <div class="certificate-container">
+                            <embed src="files/2018-新工科结题证书Cert-E-15-2018011.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2016年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>南京大学创新育人奖</h3>
+                        <p class="award-year">2016年</p>
+                        <p>获南京大学创新育人奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2016-南京大学创新育人奖.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>著作权</h3>
+                        <p class="award-year">2016年</p>
+                        <p>获得相关著作权</p>
+                        <div class="certificate-container">
+                            <img src="files/2016-著作权.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>微软创新杯</h3>
+                        <p class="award-year">2016年</p>
+                        <p>参与微软创新杯</p>
+                        <div class="certificate-container">
+                            <img src="files/2016-微软创新杯.png" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>互联网+大赛</h3>
+                        <p class="award-year">2016年</p>
+                        <p>参与互联网+大赛</p>
+                        <div class="certificate-container">
+                            <img src="files/2016互联网+大赛.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>专利</h3>
+                        <p class="award-year">2016年</p>
+                        <p>获得相关专利</p>
+                        <div class="certificate-container">
+                            <embed src="files/2016-专利.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2014年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>国家教学二等奖</h3>
+                        <p class="award-year">2014年</p>
+                        <p>获国家教学二等奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2014-国家教学二等奖-奖状.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2013年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>江苏省教学成果奖一等奖</h3>
+                        <p class="award-year">2013年</p>
+                        <p>获江苏省教学成果奖一等奖</p>
+                        <div class="certificate-container">
+                            <img src="files/2013-江苏省教学成果奖-一等奖.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>Google奖教金</h3>
+                        <p class="award-year">2013年</p>
+                        <p>获Google奖教金</p>
+                        <div class="certificate-container">
+                            <img src="files/2013-Google奖教金.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2012年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>IBM奖教金</h3>
+                        <p class="award-year">2012年</p>
+                        <p>获IBM奖教金</p>
+                        <div class="certificate-container">
+                            <img src="files/2012-IBM奖教金.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>全国工程硕士教育研究课题</h3>
+                        <p class="award-year">2012年</p>
+                        <p>参与全国工程硕士教育研究课题</p>
+                        <div class="certificate-container">
+                            <embed src="files/2012-全国工程硕士教育研究课题.pdf" type="application/pdf" class="certificate-pdf-viewer">
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <h3>软件工程与计算</h3>
+                        <p class="award-year">2012年</p>
+                        <p>软件工程与计算相关成果</p>
+                        <div class="certificate-container">
+                            <img src="files/2012-软件工程与计算_卷二_.jpg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards-by-year">
+                <h3>2011年</h3>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <h3>中国银行奖教金</h3>
+                        <p class="award-year">2011年</p>
+                        <p>获中国银行奖教金</p>
+                        <div class="certificate-container">
+                            <img src="files/2011-中国银行奖教金.jpeg" alt="证书" class="certificate-image" onclick="openModal(this.src, 'image')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 证书查看模态框 -->
+    <div id="certificateModal" class="certificate-modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="certificate-modal-content" id="modalImage">
+        <iframe class="certificate-modal-content pdf" id="modalPdf" style="display: none;"></iframe>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SEECODER实验室 - 南京大学软件学院. 保留所有权利。</p>
+    </footer>
+
+    <script>
+        // 打开模态框
+        function openModal(src, type) {
+            var modal = document.getElementById("certificateModal");
+            var modalImage = document.getElementById("modalImage");
+            var modalPdf = document.getElementById("modalPdf");
+            
+            modal.style.display = "block";
+            
+            if (type === 'image') {
+                modalImage.style.display = "block";
+                modalPdf.style.display = "none";
+                modalImage.src = src;
+            } else if (type === 'pdf') {
+                modalImage.style.display = "none";
+                modalPdf.style.display = "block";
+                modalPdf.src = src;
+            }
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById("certificateModal").style.display = "none";
+        }
+
+        // 点击模态框外部区域关闭
+        window.onclick = function(event) {
+            var modal = document.getElementById("certificateModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

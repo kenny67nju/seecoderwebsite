@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队成员 - SEECODER实验室</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0066cc;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .top-header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+        .top-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .university-logos img {
+            height: 50px;
+            margin-left: 15px;
+        }
+        .main-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .main-header img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .main-header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        section {
+            padding: 40px 0;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .team-member {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: calc(33% - 20px);
+            text-align: center;
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .team-member h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .team-member p {
+            margin: 5px 0;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* 添加导航栏样式 */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--background-color);
+        }
+        
+        /* 成员类型标签 */
+        .member-role {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        /* 毕业生按年份分组 */
+        .graduates-by-year {
+            margin-top: 20px;
+        }
+        .graduates-by-year h3 {
+            color: var(--primary-color);
+            border-bottom: 1px dashed var(--secondary-color);
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <div class="container">
+            <div></div>
+            <div class="university-logos">
+                <img src="nju_se_logo.png" alt="南京大学软件学院标志">
+                <img src="nju_logo.jpg" alt="南京大学标志">
+            </div>
+        </div>
+    </header>
+
+    <header class="main-header">
+        <div class="container">
+            <img src="seecoder_logo.png" alt="SEECODER实验室标志">
+            <h1>SEECODER实验室</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="members.html">团队成员</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="teaching.html">教学成果</a></li>
+            <li><a href="publications.html">发表论文</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="data-institute.html">电子口岸数字产业技术研究所</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+                        <section>
+            <h2>实验室老师</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="personal.png" alt="刘钦">
+                    <h3>刘钦</h3>
+                    <span class="member-role"> 副教授</span>
+                    <p>研究方向：软件工程、数据增强</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="冯桂焕">
+                    <h3>冯桂焕</h3>
+                    <span class="member-role"> 副教授</span>
+                    <p>研究方向：人机交互</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="刘峰">
+                    <h3>刘峰</h3>
+                    <span class="member-role"> 高级工程师</span>
+                    <p>研究方向：数据挖掘</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="赵凤山">
+                    <h3>赵凤山</h3>
+                    <span class="member-role"> 助理研究员</span>
+                    <p>研究方向：待更新</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>博士生</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="personal.png" alt="吴子君">
+                    <h3>吴子君</h3>
+                    <span class="member-role">博一 博士生</span>
+                    <p>研究方向：科研组</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>硕士生</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="personal.png" alt="李子旸">
+                    <h3>李子旸</h3>
+                    <span class="member-role">研三 硕士生</span>
+                    <p>研究方向：科研组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="肖羽">
+                    <h3>肖羽</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：框架组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="万沛沛">
+                    <h3>万沛沛</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：框架组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="章诚">
+                    <h3>章诚</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="柏琪">
+                    <h3>柏琪</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：框架组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="韩陈旭">
+                    <h3>韩陈旭</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：框架组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="沈咸武">
+                    <h3>沈咸武</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="季一松">
+                    <h3>季一松</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：框架组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="张翼">
+                    <h3>张翼</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="陈佳耀">
+                    <h3>陈佳耀</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：框架组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="杜威">
+                    <h3>杜威</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：框架组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="杨开新">
+                    <h3>杨开新</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="韦姚丞奕">
+                    <h3>韦姚丞奕</h3>
+                    <span class="member-role">研二 硕士生</span>
+                    <p>研究方向：鸿蒙组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="任嘉豪">
+                    <h3>任嘉豪</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="孙兆葳">
+                    <h3>孙兆葳</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="金语盼">
+                    <h3>金语盼</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="胡书毓">
+                    <h3>胡书毓</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="耿瑞林">
+                    <h3>耿瑞林</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="刘璐霖">
+                    <h3>刘璐霖</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="张涵景">
+                    <h3>张涵景</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="廖彦舟">
+                    <h3>廖彦舟</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="冯锦华">
+                    <h3>冯锦华</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="苑宇航">
+                    <h3>苑宇航</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="强煜飞">
+                    <h3>强煜飞</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="李智">
+                    <h3>李智</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="王文杰">
+                    <h3>王文杰</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="洪钊">
+                    <h3>洪钊</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="林奥">
+                    <h3>林奥</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="王钧盛">
+                    <h3>王钧盛</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：鸿蒙组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="魏鹏涛">
+                    <h3>魏鹏涛</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：平台组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="武梓龙">
+                    <h3>武梓龙</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="祝晨曦">
+                    <h3>祝晨曦</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="蒋鹏宇">
+                    <h3>蒋鹏宇</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="任楷文">
+                    <h3>任楷文</h3>
+                    <span class="member-role">研一 硕士生</span>
+                    <p>研究方向：应用组</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>本科生</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="personal.png" alt="孙彬文">
+                    <h3>孙彬文</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：科研组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="钟晨">
+                    <h3>钟晨</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：科研组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="曹政">
+                    <h3>曹政</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：科研组、鸿蒙组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="杨涵">
+                    <h3>杨涵</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：科研组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="赵晨璐">
+                    <h3>赵晨璐</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：待更新</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="王昕浩">
+                    <h3>王昕浩</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：待更新</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="朱舒颜">
+                    <h3>朱舒颜</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="李嘉洲">
+                    <h3>李嘉洲</h3>
+                    <span class="member-role">大四 本科生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="吴桐">
+                    <h3>吴桐</h3>
+                    <span class="member-role">大三 本科生</span>
+                    <p>研究方向：科研组</p>
+                </div>
+                <div class="team-member">
+                    <img src="personal.png" alt="林湧泓">
+                    <h3>林湧泓</h3>
+                    <span class="member-role">大三 本科生</span>
+                    <p>研究方向：大数据AI组</p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SEECODER实验室 - 南京大学软件学院. 保留所有权利。</p>
+    </footer>
+</body>
+</html>
