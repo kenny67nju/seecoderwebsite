@@ -331,11 +331,15 @@
 
         document.getElementById('search-box').addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            filteredPublications = publications.filter(pub => 
-                pub.title.toLowerCase().includes(searchTerm) ||
-                pub.authors.toLowerCase().includes(searchTerm) ||
-                pub.venue.toLowerCase().includes(searchTerm)
-            );
+            if (searchTerm === '') {
+                filteredPublications = [...publications];
+            } else {
+                filteredPublications = publications.filter(pub => 
+                    pub.title.toLowerCase().includes(searchTerm) ||
+                    pub.authors.toLowerCase().includes(searchTerm) ||
+                    pub.venue.toLowerCase().includes(searchTerm)
+                );
+            }
             currentPage = 1;
             renderPublications();
         });
